@@ -12,8 +12,8 @@ from collections import Counter
 import csv
 
 PATH = "C:\\Users\\georg\\Desktop\\chromedriver.exe"
-USERNAME = "jakelinggg@gmail.com"
-PASSWORD = "2572225463"
+USERNAME = "georgewang615@gmail.com"
+PASSWORD = "2572225463Gw"
 
 driver = webdriver.Chrome(PATH)
 
@@ -256,15 +256,72 @@ nightingale = [
 
 ]
 
+others = [
+    "https://www.linkedin.com/in/nicole-mahan-63a41137/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/simone-newman-43789b10/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/andrew-campion/detail/recent-activity/", #white label
+    "https://www.linkedin.com/in/andrea-mcgarry-823291167/detail/recent-activity/", #CRM
+    "https://www.linkedin.com/in/shane-hancock-a0484192/detail/recent-activity/", #white label
+    "https://www.linkedin.com/in/landjames/detail/recent-activity/", #2018 report
+    "https://www.linkedin.com/in/kathryn-barnes-webley-9641b7b4/detail/recent-activity/", #data audit
+    "https://www.linkedin.com/in/chantal-giles-731a6113/detail/recent-activity/", #data audit
+    "https://www.linkedin.com/in/paul-cullen-au/detail/recent-activity/", #advertising
+    "https://www.linkedin.com/in/matthewtee/detail/recent-activity/", #nightingale, FFR
+    "https://www.linkedin.com/in/steven-bennett-029a7436/detail/recent-activity/", #2018 report
+    "https://www.linkedin.com/in/euansneyd/detail/recent-activity/", #white label
+    "https://www.linkedin.com/in/todd-stevenson-42972723/detail/recent-activity/", #white label
+    "https://www.linkedin.com/in/gideonlipman/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/benjamin-abell-12299275/detail/recent-activity/", #2019 report
+    "https://www.linkedin.com/in/matthew-roberts-81754094/detail/recent-activity/", #FFR
+    "https://www.linkedin.com/in/matthewrowecfp/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/grahame-evans-94513215/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/lisahamiltonrose/detail/recent-activity/", #FFR
+    "https://www.linkedin.com/in/charlie-wapshott-65a7a737/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/james-meade-0049922a/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/darrensteinhardt/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/itsjordankerr/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/lesleymamelokintegritylife/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/lucy-hill-27864228/detail/recent-activity/", #advertising
+    "https://www.linkedin.com/in/fandronaco/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/jonathan-tolub-98a741/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/peter-ornsby-456b5b12/detail/recent-activity/", #data audit
+    "https://www.linkedin.com/in/selin-ertac/detail/recent-activity/", #data audit
+    "https://www.linkedin.com/in/twbaldwin/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/eugene-ardino-a209b313/detail/recent-activity/", #licensee compliance manager
+    "https://www.linkedin.com/in/rick-steele/detail/recent-activity/", #FFR
+    "https://www.linkedin.com/in/brendan-carrig-71988420/detail/recent-activity/", #2018 report
+    "https://www.linkedin.com/in/richardjnunn/detail/recent-activity/", #2019 report
+    "https://www.linkedin.com/in/merayelkhoury/detail/recent-activity/", #2019 report
+    "https://www.linkedin.com/in/michael-mulholland-3bb03b4/detail/recent-activity/", #2019 report
+    "https://www.linkedin.com/in/noel-lord-3592b420/detail/recent-activity/", #2019 report
+    "https://www.linkedin.com/in/deborahdalziel/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/geoff-rogers-40a81556/detail/recent-activity/", #data audit
+    "https://www.linkedin.com/in/robyn-packard-1b54b015/detail/recent-activity/", #data audit
+    "https://www.linkedin.com/in/rinchenolthang/detail/recent-activity/", #advertising
+    "https://www.linkedin.com/in/tchourilov/detail/recent-activity/", #2020 report
+    "https://www.linkedin.com/in/george-chirakis-28397226/detail/recent-activity/", #CRM, nightingale
+    "https://www.linkedin.com/in/emily-vella-643294124/detail/recent-activity/", #CRM
+    "https://www.linkedin.com/in/tilly-simpson-15567a84/detail/recent-activity/", #FFR
+    "https://www.linkedin.com/in/adam-myers-7591751/detail/recent-activity/", #FFR
+    "https://www.linkedin.com/in/nicholas-simpson-80051b22/detail/recent-activity/", #FFR, CRM
+    "https://www.linkedin.com/in/james-gyton-54828216/detail/recent-activity/", #data audit
+    "https://www.linkedin.com/in/sean-cogman-4ab1119b/detail/recent-activity/", #data audit
+    "https://www.linkedin.com/in/niall-mcconville-35a67a30/detail/recent-activity/", #2020 report, 2018 report
+    "https://www.linkedin.com/in/megan-isles/detail/recent-activity/", #advertising
+    "https://www.linkedin.com/in/joshua-parisotto/detail/recent-activity/", #2018 report
+    "https://www.linkedin.com/in/kieran-forde-9a1aba1/detail/recent-activity/", #2020 report
+]
+
+
 list = []
 
 
 
 def scrape(link):
-
-    driver.get(link)
-    span_title = driver.find_elements_by_class_name("feed-shared-actor__name")
-    time.sleep(3)
+    new = link.strip("/recent-activity/") + "/interests/influencers"
+    driver.get(new)
+    span_title = driver.find_elements_by_class_name("pv-entity__summary-title-text")
+    time.sleep(10)
     for elem in span_title:
         list.append(elem.text)
 
@@ -275,12 +332,11 @@ for i in range(len(nightingale)):
 
 
 
-
 dict = Counter(list)
 
 sorted_dict = sorted(dict.items(), key = lambda x: x[1], reverse = True)
 
-with open('nightingale.csv', 'w', encoding = 'UTF8') as f:
+with open('nightingale_influencers.csv', 'w', encoding = 'UTF8') as f:
     writer = csv.writer(f)
     for i in sorted_dict:
         writer.writerow(i)
